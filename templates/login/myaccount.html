@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="/static/css/trailers.css">
+{% endblock head %}
+
+{% block content %}
+<form method="POST" onkeydown="return event.key != 'Enter';">{%csrf_token%}
+    <h1>My account</h1>
+    <hr class="hr-separator">
+    <div class="modify-account-container">
+        <div class="input-container">
+            <div class="counter-flex">
+                <h2>Username*</h2>
+                <p id="account-username-p">(0/150)</p>
+            </div>
+            <p class="danger">{{form.username.errors.as_text}}</p>
+                {{form.username}}
+        </div>
+        <div class="input-container">
+            <div class="counter-flex">
+                <h2>Email</h2>
+                <p id="account-email-p">(0/150)</p>
+            </div>
+            <p class="danger">{{form..errors.as_text}}</p>
+            {{form.email}}
+        </div>
+        <div class="input-container">
+            <div class="counter-flex">
+                <h2>First name</h2>
+                <p id="account-first_name-p">(0/150)</p>
+            </div>
+            <p class="danger">{{form.first_name.errors.as_text}}</p>
+            {{form.first_name}}
+        </div>
+        <div class="input-container">
+            <div class="counter-flex">
+                <h2>Last name</h2>
+                <p id="account-last_name-p">(0/150)</p>
+            </div>
+            <p class="danger">{{form.last_name.errors.as_text}}</p>
+            {{form.last_name}}
+        </div>
+        <br>
+        <div class="">
+            <button type="button"id="change-password" class="btn-yellow">Change password</button>
+        </div>
+        <br>
+        <div class="container-end">
+            <button type="button"id="open-confirmation-popup" class="btn-save">Save</button>
+        </div>
+        
+    </div>
+    
+        
+    <div class="popup" id="confirmation-popup">
+        <div class="overlay">
+            <div class="content">
+                <div class="container-center">
+                    <h2>Are you sure that you want to modify your account?</h2>
+                </div>
+                <div class="container-center">
+                    <button type="button" class="btn-danger" id="close-confirmation-popup">Cancel</button>
+                    <button type="submit" class="btn-save" id="save-confirmation">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div 
+        {% if valid %}
+            class="popup ok active"
+        {% else %}
+            class="popup ok"
+        {% endif %}
+        id="ok-popup">
+        <div class="overlay">
+            <div class="content">
+                <div class="container-center">
+                    <i class="fa-solid fa-check fa-beat" style="--fa-animation-duration: 2s;"></i>
+                </div>
+                <div class="container-center">
+                    <h2>Account modified successfully</h2>
+                </div>
+                <div class="container-center">
+                    <button type="button"id="close-ok-popup" class="btn-save">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div 
+        {% if error %}
+            class="popup error active"
+        {% else %}
+            class="popup error"
+        {% endif %}
+     id="error-popup">
+        <div class="overlay">
+            <div class="content">
+                <div class="container-center">
+                    <i class="fa-solid fa-triangle-exclamation fa-beat" style="--fa-animation-duration: 1s;"></i>
+                </div>
+                <div class="container-center">
+                    <h2>There was an error</h2>
+                </div>
+                    <p>{{errorMessage}}</p>
+                <div class="container-center">
+                    <button type="button"id="close-error-popup" class="btn-danger">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</form>
+<script>
+const changePasswordBtn = document.getElementById("change-password");
+changePasswordBtn.addEventListener("click",()=>{
+    location.href="{% url 'Login:changePassword'%}";
+});
+</script>
+<script src="/static/scripts/popup.js"></script>
+<script src="/static/scripts/count-char.js"></script>
+<script src="/static/scripts/modify-account-count-char.js"></script>
+{% endblock content %}

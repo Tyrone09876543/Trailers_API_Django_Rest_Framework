@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.py[cod]
+# Ignorar archivos de caché de los compiladores
+*.pdb
+*.egg-info/
+*.egg
+
+# Ignorar archivos de caché de otros tipos
+*.cache
+*.tmp
+*.swp
