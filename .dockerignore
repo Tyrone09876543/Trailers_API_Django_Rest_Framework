@@ -1,0 +1,26 @@
+# Ignorar archivos y directorios innecesarios
+
+# Ignorar archivos de configuración de entornos virtuales
+venv/
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Ignorar archivos de log
+*.log
+
+# Ignorar archivos de caché
+*.cache
+
+# Ignorar archivos temporales
+*.tmp
+*.swp
+
+# Ignorar archivos de editor
+*.idea/
+*.vscode/
+
+# Ignorar archivos de control de versiones
+.git/
+.gitignore

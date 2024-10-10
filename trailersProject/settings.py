@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-begz8&3ya%4r=naxef@y(#px^7d=98&-5@!e*)37jx6r0gzo@g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['trailers-django-latest.onrender.com', 'trailers-django.onrender.com', 'localhost']
+CSRF_TRUSTED_ORIGINS = ['https://trailers-django-latest.onrender.com', 'https://trailers-django.onrender.com']
 # Application definition
 CORS_ORIGIN_ALLOW_ALL=True
 INSTALLED_APPS = [
